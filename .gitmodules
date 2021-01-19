@@ -5,7 +5,7 @@
 [submodule "gemoc-studio-modeldebugging"]
 	path = gemoc-studio-modeldebugging
 	url = https://github.com/gemoc/gemoc-studio-modeldebugging-eclipsefork.git
-	branch = master
+	branch = concurrency-analysis
 [submodule "gemoc-studio-execution-ale"]
 	path = gemoc-studio-execution-ale
 	url = https://github.com/gemoc/gemoc-studio-execution-ale-eclipsefork.git
