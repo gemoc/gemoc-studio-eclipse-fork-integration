@@ -3,6 +3,7 @@ pipeline {
 	agent any
     tools {
         maven 'apache-maven-latest'
+        jdk 'open-jdk-11'
     }
     stages {
 	    stage('Preparation') {
