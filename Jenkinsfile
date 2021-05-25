@@ -28,7 +28,7 @@ pipeline {
 					// Run the maven build and unit tests only  
 					// maven requires some ram to build the update site and product
 					withEnv(["STUDIO_VARIANT=${studioVariant}","BRANCH_VARIANT=${BRANCH_NAME}",
-						"MAVEN_OPTS=-Xmx2000m -XshowSettings:vm -Duser.home=/home/jenkins"]){
+						"MAVEN_OPTS=-Xmx2000m -XshowSettings:vm"]){
 						dir ('gemoc-studio/dev_support/full_compilation') {
 							sh 'printenv'         
 							sh "mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
