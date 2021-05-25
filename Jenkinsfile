@@ -23,7 +23,7 @@ pipeline {
 				// install JAVAFX TODO find a better way !
 				// 
 				sh '''
-				   if [[ ! -d ${HOME}/javafx-sdk-11.0.2 ]; then 
+				   if [[ ! -d ${HOME}/javafx-sdk-11.0.2 ]]; then 
 				      wget -N https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
 				      unzip -n ${HOME}/tools/javafx-11-0-2-sdk-linux.zip -d ${HOME}/tools 
 				      rm -f ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
