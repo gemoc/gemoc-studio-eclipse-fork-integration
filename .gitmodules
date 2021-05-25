@@ -1,7 +1,4 @@
-[submodule "gemoc-studio"]
-	path = gemoc-studio
-	url = https://github.com/gemoc/gemoc-studio-eclipsefork.git
-	branch = master
+
 [submodule "gemoc-studio-modeldebugging"]
 	path = gemoc-studio-modeldebugging
 	url = https://github.com/gemoc/gemoc-studio-modeldebugging-eclipsefork.git
@@ -22,3 +19,6 @@
 	path = gemoc-studio-execution-java
 	url = https://github.com/gemoc/gemoc-studio-execution-java.git
 	branch = master
+[submodule "gemoc-studio"]
+	path = gemoc-studio
+	url = https://github.com/gemoc/gemoc-studio-eclipsefork.git
