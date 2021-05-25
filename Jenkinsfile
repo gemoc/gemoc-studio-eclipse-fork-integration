@@ -19,29 +19,4 @@ pipeline {
 			}
 		}
 	}
-/*	stage('Build and verify') {
-		script {
-		      def studioVariant
-		      if(  env.JENKINS_URL.contains("https://ci.eclipse.org/gemoc/")){
-		      	studioVariant = "Official build"
-		      } else {
-		      	studioVariant = "${JENKINS_URL}"
-		      }
-		      // Run the maven build with tests  
-		      withEnv(["STUDIO_VARIANT=${studioVariant}","BRANCH_VARIANT=${BRANCH_NAME}"]){ 
-		          sh 'printenv'         
-			      dir ('gemoc-studio/dev_support/full_compilation') {
-			          wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
-			              // sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify --errors "
-			              sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} clean verify --errors "
-			          }
-			      }      
-	      }
-	      }
-	   }	   
-	   stage('Deployment') {
-	      junit '**/target/surefire-reports/TEST-*.xml'
-	      archiveArtifacts '**/target/products/*.zip,**/gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/repository/**'
-	   }
-	}*/
 }
