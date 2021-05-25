@@ -24,7 +24,7 @@ pipeline {
 				// 
 				sh '''
 				   if [ ! -d ${HOME}/tools/javafx-sdk-11.0.2 ]; then 
-				      wget -N https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
+				      wget https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
 				      unzip -n ${HOME}/tools/javafx-11-0-2-sdk-linux.zip -d ${HOME}/tools 
 				      rm -f ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
 				   fi
