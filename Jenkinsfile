@@ -27,6 +27,8 @@ pipeline {
 				      wget https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
 				      unzip -n ${HOME}/tools/javafx-11-0-2-sdk-linux.zip -d ${HOME}/tools 
 				      rm -f ${HOME}/tools/javafx-11-0-2-sdk-linux.zip 
+				   else 
+				      echo ${HOME}/tools/javafx-sdk-11.0.2 allready installed
 				   fi
 				'''
 				//JAVAFX_HOME=${HOME}/javafx-sdk-11.0.2
