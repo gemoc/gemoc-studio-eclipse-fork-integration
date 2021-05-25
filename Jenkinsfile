@@ -1,7 +1,9 @@
 
 pipeline {
 	agent any
-
+    tools {
+        maven 'apache-maven-latest'
+    }
     stages {
 	    stage('Preparation') {
 		    steps {	
@@ -14,5 +16,34 @@ pipeline {
 				sh "./gemoc-studio/dev_support/jenkins/showGitBranches.sh ."
 			}
 		}
+		stage('Build and unit test') {
+			steps { 
+				script {	
+					def studioVariant
+					if(  env.JENKINS_URL.contains("https://ci.eclipse.org/gemoc/")){
+						studioVariant = "Official build"
+					} else {
+						studioVariant = "${JENKINS_URL}"
+					}
+					// Run the maven build and unit tests only  
+					// maven requires some ram to build the update site and product
+					withEnv(["STUDIO_VARIANT=${studioVariant}","BRANCH_VARIANT=${BRANCH_NAME}",
+						"MAVEN_OPTS=-Xmx2000m -XshowSettings:vm -Duser.home=/home/jenkins"]){
+						dir ('gemoc-studio/dev_support/full_compilation') {
+							sh 'printenv'         
+							sh "mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
+									-Djava.awt.headless=true \
+									--projects !../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,!../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb\
+									clean install --errors --show-version"
+						}      
+					}
+				}
+			}
+			post {
+				always {
+					junit '**/target/surefire-reports/TEST-*.xml' 
+				}
+			}
+	 	}
 	}
 }
