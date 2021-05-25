@@ -1,0 +1,24 @@
+[submodule "gemoc-studio"]
+	path = gemoc-studio
+	url = https://github.com/gemoc/gemoc-studio-eclipsefork.git
+	branch = master
+[submodule "gemoc-studio-modeldebugging"]
+	path = gemoc-studio-modeldebugging
+	url = https://github.com/gemoc/gemoc-studio-modeldebugging-eclipsefork.git
+	branch = master
+[submodule "gemoc-studio-execution-ale"]
+	path = gemoc-studio-execution-ale
+	url = https://github.com/gemoc/gemoc-studio-execution-ale-eclipsefork.git
+	branch = master
+[submodule "gemoc-studio-execution-moccml"]
+	path = gemoc-studio-execution-moccml
+	url = https://github.com/gemoc/gemoc-studio-execution-moccml.git
+	branch = master
+[submodule "gemoc-studio-moccml"]
+	path = gemoc-studio-moccml
+	url = https://github.com/gemoc/gemoc-studio-moccml.git
+	branch = master
+[submodule "gemoc-studio-execution-java"]
+	path = gemoc-studio-execution-java
+	url = https://github.com/gemoc/gemoc-studio-execution-java.git
+	branch = master
