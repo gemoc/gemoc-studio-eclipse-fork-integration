@@ -23,7 +23,7 @@
         <artifactId>git-sync</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <configuration>
-        	<parentGitURL>git@github.com:gemoc/gemoc-studio-eclipse-integration.git</parentGitURL>
+        	<parentGitURL>git@github.com:gemoc/gemoc-studio-eclipseforks-integration.git</parentGitURL>
         	<userOrToken>${gituser.name}</userOrToken>
         	<password>${gituser.password}</password>
         	<committerName>${gituser.name}</committerName>

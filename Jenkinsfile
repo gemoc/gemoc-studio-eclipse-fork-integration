@@ -1,6 +1,11 @@
 
 pipeline {
 	agent any
+	options {
+		buildDiscarder( logRotator(numToKeepStr:'20', artifactNumToKeepStr: '1'))
+		disableConcurrentBuilds()
+		timeout(time: 5, unit: 'HOURS')   // timeout on whole pipeline job
+	}
     tools {
         maven 'apache-maven-latest'
         jdk 'open-jdk-11'
@@ -15,6 +20,7 @@ pipeline {
 				sh "git submodule update --init"
 				sh "chmod 777 ./gemoc-studio/dev_support/jenkins/showGitBranches.sh"
 				sh "./gemoc-studio/dev_support/jenkins/showGitBranches.sh ."
+				// install JAVAFX TODO find a better way !
 				sh "wget https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/javafx-11-0-2-sdk-linux.zip"
 				sh "unzip ${HOME}/javafx-11-0-2-sdk-linux.zip -d ${HOME}"
 				//JAVAFX_HOME=${HOME}/javafx-sdk-11.0.2
