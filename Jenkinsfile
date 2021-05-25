@@ -21,8 +21,8 @@ pipeline {
 				sh "chmod 777 ./gemoc-studio/dev_support/jenkins/showGitBranches.sh"
 				sh "./gemoc-studio/dev_support/jenkins/showGitBranches.sh ."
 				// install JAVAFX TODO find a better way !
-				sh "wget -N https://gluonhq.com/download/javafx-11-0-2-sdk-linux  -O ${HOME}/javafx-11-0-2-sdk-linux.zip"
-				sh "unzip -n ${HOME}/javafx-11-0-2-sdk-linux.zip -d ${HOME}"
+				sh "wget -N -P ${HOME}/tmp https://gluonhq.com/download/javafx-11-0-2-sdk-linux"
+				sh "unzip -n ${HOME}/tmp/openjfx-11.0.2_linux-x64_bin-sdk.zip -d ${HOME}"
 				//JAVAFX_HOME=${HOME}/javafx-sdk-11.0.2
 			}
 		}
