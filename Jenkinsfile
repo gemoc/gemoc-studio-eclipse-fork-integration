@@ -63,5 +63,47 @@ pipeline {
 				}
 			}
 	 	}
+	 	stage('System test') {
+			steps { 
+				script {	
+					def studioVariant
+					if(  env.JENKINS_URL.contains("https://hudson.eclipse.org/gemoc/")){
+						studioVariant = "Official build"
+					} else {
+						studioVariant = "${JENKINS_URL}"
+					}
+					// Run the maven system tests only  
+					// use less RAM to maven in order to give more to the UI test JVM
+					withEnv(["STUDIO_VARIANT=${studioVariant}","BRANCH_VARIANT=${BRANCH_NAME}",
+						"MAVEN_OPTS=-XshowSettings:vm"]){
+						dir ('gemoc-studio/dev_support/full_compilation') {         
+							wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+								sh 'printenv'
+								
+								// use linux timeout in order to continue the video capture
+								// capture the returnStatus in order to make sure to stop ffmepg even if an error occured
+								def status = sh(returnStatus: true, script: "timeout -s KILL 60m \
+									mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
+										--projects ../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb\
+										verify --errors --show-version ")					
+							}
+						}      
+					}
+				}
+			}
+			post {
+				always {
+					junit '**/target/surefire-reports/TEST-*.xml' 
+				}
+				// archive artifact even if it failed (timeout) or was aborted (in order to debug using the video)
+				// because the following steps will be skipped
+				aborted {
+				    archiveArtifacts 'gemoc-studio/dev_support/full_compilation/target/**, **/screenshots/**'
+				}
+				failure {
+				    archiveArtifacts 'gemoc-studio/dev_support/full_compilation/target/**, **/screenshots/**'				    
+				}
+			}
+	 	}
 	}
 }
