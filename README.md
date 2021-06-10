@@ -11,7 +11,14 @@ Integration via git modules of GEMOC components in the GEMOC organization for us
  
 # Maintenance tasks
 
+In order to add a new repository in the integration build, you need to update 2 points:
+
+* add the new git repository as a git submodule in the master branch. (default branch name must be "master")
+* update the script releng-scripts/sync-forked-masters/syn_git_masters.sh to automate the copy of commit from the new forked repository master branch 
+
 ## add a new submodule
+
+Make sure to align the folder name to the expected folder organisation if the repository fork as a different name than its origin. 
 
 ```bash
 git submodule add -b master https://github.com/gemoc/gemoc-studio-eclipsefork.git gemoc-studio
