@@ -4,10 +4,13 @@ Integration via git modules of GEMOC components in the GEMOC organization for us
 ## CI Jobs
 
 * **https://ci.inria.fr/gemoc/job/gemoc-studio-gemocforks-integration/** : CI Jobs for each branches
+(trigger policy: polling of branches content every 5 minutes)
 
 * https://ci.inria.fr/gemoc/job/git-sync-submodules-branches_gemoc-studio-eclipseforks-integration/ : job is in charge of synchronizing the branches for all known submodules (ie. create or remove branches if they exist in the submodules)
+(trigger policy: every 5 minutes)
 
 * https://ci.inria.fr/gemoc/job/sync_master_forked_repositories/ : job in charge of copying all changes from master branches of the origin repositories (in eclipse organisation ) to the gemoc organisation
+ (trigger policy: every hours)
  
 # Maintenance tasks
 
