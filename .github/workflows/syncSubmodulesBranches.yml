@@ -24,7 +24,7 @@ jobs:
           distribution: 'adopt'
       - name: Sync submodules branches
         run: |
-          echo "GITUSER_NAME=${{ secrets.GITUSER_NAME }}" >> $GITHUB_ENV
-          echo "GITUSER_PASSWORD=${{ secrets.GITUSER_PASSWORD }}" >> $GITHUB_ENV
+          export GITUSER_NAME=${{ secrets.GITUSER_NAME }}
+          export GITUSER_PASSWORD=${{ secrets.GITUSER_PASSWORD }}
           cd releng-scripts/sync-gemoc-submodules
           mvn --batch-mode clean verify
