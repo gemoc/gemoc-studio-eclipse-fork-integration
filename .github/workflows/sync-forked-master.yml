@@ -34,6 +34,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           cd $GITHUB_WORKSPACE/releng-scripts/sync-forked-masters
-          pwd
-          ls
-          ./sync_git_masters.sh
+          ./syn_git_masters.sh
