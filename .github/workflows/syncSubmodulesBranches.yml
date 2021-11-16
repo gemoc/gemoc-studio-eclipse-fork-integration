@@ -26,6 +26,7 @@ jobs:
         run: |
           echo $HOME
           ls -lsa $HOME
+          ls -lsa $HOME/.ssh
       - name: Sync submodules branches
         run: |
           export GITUSER_NAME=${{ secrets.GITUSER_NAME }}
