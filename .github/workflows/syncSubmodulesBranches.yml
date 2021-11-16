@@ -22,9 +22,13 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      - name: SetSSH key
+        run: |
+          echo $HOME
+          ls -lsa $HOME
       - name: Sync submodules branches
         run: |
           export GITUSER_NAME=${{ secrets.GITUSER_NAME }}
           export GITUSER_PASSWORD=${{ secrets.GITUSER_PASSWORD }}
           cd releng-scripts/sync-gemoc-submodules
-          mvn --batch-mode clean verify
+          mvn --batch-mode -Dgituser.email=didier.vojtisek@inria.fr clean verify
