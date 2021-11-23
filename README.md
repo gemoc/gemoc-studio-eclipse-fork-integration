@@ -1,9 +1,9 @@
-# gemoc-studio-eclipse-fork-integration
+# gemoc-studio-eclipseforks-integration
 Integration via git modules of GEMOC components in the GEMOC organization for use by continuous integration server
 
 ## CI Jobs
 
-* **https://ci.inria.fr/gemoc/job/gemoc-studio-gemocforks-integration/** : CI Jobs for each branches
+* [![https://ci.inria.fr/gemoc/job/gemoc-studio-eclipseforks-integration/job/master/badge/icon?](https://ci.inria.fr/gemoc/job/gemoc-studio-eclipseforks-integration/job/master/badge/icon?)](https://ci.inria.fr/gemoc/job/gemoc-studio-eclipseforks-integration/job/master) : CI Jobs for each branches
 (trigger policy: polling of branches content every 5 minutes)
 
 * [![SyncSubModulesBranches](https://github.com/gemoc/gemoc-studio-eclipseforks-integration/actions/workflows/syncSubmodulesBranches.yml/badge.svg)](https://github.com/gemoc/gemoc-studio-eclipseforks-integration/actions/workflows/syncSubmodulesBranches.yml) : job is in charge of synchronizing the branches for all known submodules (ie. create or remove branches if they exist in the submodules)
