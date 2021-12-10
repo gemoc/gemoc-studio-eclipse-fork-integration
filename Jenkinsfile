@@ -117,5 +117,11 @@ pipeline {
 				}
 			}
 	 	}
+	 	stage("Archive in Jenkins") {
+			steps {
+				echo "archive artifact"
+				archiveArtifacts 'gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/products/*.zip, gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/repository/**, gemoc-studio/docs/org.eclipse.gemoc.studio.doc/target/publish/**, gemoc-studio/dev_support/tycho_full_compilation/target/**, **/screenshots/**, **/.metadata/.log, **/process_mem.log'
+			}
+		}
 	}
 }
