@@ -127,10 +127,16 @@ pipeline {
               color: 'good',
               message: "Build fixed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) is back to normal."
         }
-        failure {
+        unstable {
 	        slackSend  channel: '#ci',
 	          failOnError:true,
               color: 'warning',
+	          message: "Build unstable  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+	    }
+        failure {
+	        slackSend  channel: '#ci',
+	          failOnError:true,
+              color: 'danger',
 	          message: "Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 	    }
     }
