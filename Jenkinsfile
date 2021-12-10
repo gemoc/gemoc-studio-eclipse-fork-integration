@@ -105,7 +105,7 @@ pipeline {
 			}
 			post {
 				always {
-					junit '**/target/surefire-reports/TEST-*.xml' 
+					junit '**/target/surefire-reports/TEST-*.xml' 					
 				}
 				// archive artifact even if it failed (timeout) or was aborted (in order to debug using the video)
 				// because the following steps will be skipped
@@ -117,18 +117,10 @@ pipeline {
 				}
 			}
 	 	}
-	 	stage("Archive in Jenkins") {
-			steps {
-				echo "archive artifact"
-				archiveArtifacts 'gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/products/*.zip, gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/repository/**, gemoc-studio/docs/org.eclipse.gemoc.studio.doc/target/publish/**, gemoc-studio/dev_support/tycho_full_compilation/target/**, **/screenshots/**, **/.metadata/.log, **/process_mem.log'
-			}
-		}
 	}
 	post {
 		success {
-            slackSend channel: '#ci',
-              color: 'good',
-              message: "Build success - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+			archiveArtifacts 'gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/products/*.zip, gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.updatesite/target/repository/**, gemoc-studio/docs/org.eclipse.gemoc.studio.doc/target/publish/**, gemoc-studio/dev_support/tycho_full_compilation/target/**, **/screenshots/**, **/.metadata/.log, **/process_mem.log'            
         }
 		fixed {
             slackSend channel: '#ci',
