@@ -124,4 +124,22 @@ pipeline {
 			}
 		}
 	}
+	post {
+		success {
+            slackSend channel: '#ci',
+              color: 'good',
+              message: "Build success - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+		fixed {
+            slackSend channel: '#ci',
+              color: 'good',
+              message: "Build fixed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) is back to normal."
+        }
+        failure {
+	        slackSend  channel: '#ci',
+	          failOnError:true,
+              color: 'warning',
+	          message: "Build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+	    }
+    }
 }
