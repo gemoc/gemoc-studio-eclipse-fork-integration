@@ -26,8 +26,8 @@ jobs:
         run: |
           echo $HOME
           ls -lsa $HOME
-          echo "${{ secrets.BOT_SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa
-          chmod og-rw $HOME/.ssh/id_rsa
+          echo "${{ secrets.BOT_SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_ed25519
+          chmod og-rw $HOME/.ssh/id_ed25519
           ls -lsa $HOME/.ssh
       - name: Sync submodules branches
         run: |
