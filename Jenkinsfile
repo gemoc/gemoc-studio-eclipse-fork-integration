@@ -40,7 +40,7 @@ pipeline {
 					withEnv(["JAVAFX_HOME=${HOME}/tools/javafx-sdk-11.0.2",
 						     "MAVEN_OPTS=-Xmx2000m -XshowSettings:vm"]){
 						dir ('gemoc-studio/dev_support/pomfirst_full_compilation') {
-							sh "mvn -Dmaven.test.failure.ignore clean install --errors --show-version"
+							sh "mvn -Dmaven.test.failure.ignore clean install --errors --show-version -Dstyle.color=always"
 						}      
 					}
 				}
@@ -64,7 +64,7 @@ pipeline {
 							sh "mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
 									-Djava.awt.headless=true \
 									--projects !../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,!../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb\
-									clean install --errors --show-version"
+									clean install --errors --show-version  -Dstyle.color=always"
 						}      
 					}
 				}
@@ -97,7 +97,7 @@ pipeline {
 								def status = sh(returnStatus: true, script: "timeout -s KILL 60m \
 									mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
 										--projects ../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb\
-										verify --errors --show-version ")					
+										verify --errors --show-version  -Dstyle.color=always")					
 							}
 						}      
 					}
