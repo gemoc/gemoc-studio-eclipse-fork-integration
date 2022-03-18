@@ -5,7 +5,7 @@ pipeline {
 		buildDiscarder( logRotator(numToKeepStr:'20', artifactNumToKeepStr: '1'))
 		disableConcurrentBuilds()
 		timeout(time: 5, unit: 'HOURS')   // timeout on whole pipeline job
-        ansiColor('xterm')
+        ansiColor('gnome-terminal')
 	}
     tools {
         maven 'apache-maven-latest'
