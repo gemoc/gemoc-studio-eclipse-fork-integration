@@ -106,7 +106,7 @@ pipeline {
 								// capture the returnStatus in order to make sure to stop ffmepg even if an error occured
 								def status = sh(returnStatus: true, script: "timeout -s KILL 60m \
 									mvn -Dmaven.test.failure.ignore \"-Dstudio.variant=${studioVariant}\" -Dbranch.variant=${BRANCH_VARIANT} \
-										--projects ../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb\
+										--projects ../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.lwb,../../gemoc_studio/tests/org.eclipse.gemoc.studio.tests.system.mwb,../../gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.targetplatform\
 										verify --errors --show-version  -Dstyle.color=always")					
 							}
 						}      
