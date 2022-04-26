@@ -33,5 +33,6 @@ jobs:
         run: |
           export GITUSER_NAME=gemoc-bot
           export GITUSER_PASSWORD=${{ secrets.BOT_GITUSER_PASSWORD }}
+          export GITUSER_TOKEN=${{ secrets.BOT_GITUSER_TOKEN }}
           cd releng-scripts/sync-gemoc-submodules
           mvn --batch-mode -Dgituser.email=gemocbot@gmail.com -Dstyle.color=always clean verify
