@@ -35,6 +35,18 @@ pipeline {
 				//JAVAFX_HOME=${HOME}/javafx-sdk-11.0.2
 			}
 		}
+		stage('Generate protocols') {
+			steps { 
+				nodejs(nodeJSInstallationName: 'nodejs-17.x') {
+			    	dir ('gemoc-studio-modeldebugging/protocols/generators/ts/JSONSchema2APIProtocolGenerator') {
+						sh 'npm config ls'
+						sh 'npm install'
+						sh 'npm run build'
+						sh 'npm run generate'
+					}
+		        }
+			}
+	 	}
 		stage('Pomfirst Build') {
 			steps { 
 				script {	
@@ -47,7 +59,7 @@ pipeline {
 				}
 			}
 	 	}
-	 	stage('Update targetplatform') {
+	 	/* stage('Update targetplatform') {
 			steps { 
 				script {	
 					dir ('gemoc-studio/gemoc_studio/releng/org.eclipse.gemoc.gemoc_studio.targetplatform') {
@@ -55,8 +67,8 @@ pipeline {
 					} 
 				}
 			}
-	 	}
-	 	stage('Tycho Build and unit test') {
+	 	} */
+	 	stage('Tycho Build and unit tests') {
 			steps { 
 				script {	
 					def studioVariant
@@ -85,7 +97,7 @@ pipeline {
 				}
 			}
 	 	}
-	 	stage('GemocStudio tycho System test') {
+	 	stage('Tycho System tests') {
 			steps { 
 				script {	
 					def studioVariant
