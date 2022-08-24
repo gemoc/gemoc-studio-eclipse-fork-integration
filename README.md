@@ -25,6 +25,7 @@ Make sure to align the folder name to the expected folder organisation if the re
 
 ```bash
 git submodule add -b master https://github.com/gemoc/gemoc-studio-eclipsefork.git gemoc-studio
+git submodule add -b master https://github.com/gemoc/gemoc-studio-commons.git gemoc-studio-commons
 git submodule add -b master https://github.com/gemoc/gemoc-studio-modeldebugging-eclipsefork.git gemoc-studio-modeldebugging
 git submodule add -b master https://github.com/gemoc/gemoc-studio-execution-ale-eclipsefork.git gemoc-studio-execution-ale
 git submodule add -b master https://github.com/gemoc/gemoc-studio-execution-moccml.git gemoc-studio-execution-moccml
