@@ -29,6 +29,8 @@ function sync_github_repo_masters {
 
 sync_github_repo_masters eclipse gemoc-studio gemoc gemoc-studio-eclipsefork
 
+sync_github_repo_masters eclipse gemoc-studio-commons gemoc gemoc-studio-commons
+
 sync_github_repo_masters eclipse gemoc-studio-modeldebugging gemoc gemoc-studio-modeldebugging-eclipsefork
 
 sync_github_repo_masters eclipse gemoc-studio-execution-ale gemoc gemoc-studio-execution-ale-eclipsefork
