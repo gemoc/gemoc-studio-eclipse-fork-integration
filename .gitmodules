@@ -13,7 +13,7 @@
 [submodule "gemoc-studio-execution-moccml"]
 	path = gemoc-studio-execution-moccml
 	url = https://github.com/gemoc/gemoc-studio-execution-moccml.git
-	branch = master
+	branch = concurrency-analysis
 [submodule "gemoc-studio-moccml"]
 	path = gemoc-studio-moccml
 	url = https://github.com/gemoc/gemoc-studio-moccml.git
